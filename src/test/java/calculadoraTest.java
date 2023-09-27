@@ -130,5 +130,45 @@ public class calculadoraTest {
     }
 
     /*MULTIPLICATION*/
+    @Test
+    @DisplayName("#Multiply > Multiply when one number is zero >  return zero")
+    void multiplyWhenOneNumberIsZeroReturnZero(){
+        int result = calculator.multiply(1,0);
+        int secondResult = calculator.multiply(0,1);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(0,result),
+                ()-> Assertions.assertEquals(0,secondResult)
+        );
+    }
+
+    @Test
+    @DisplayName("#Multiply > when one number is Negative and the another is Positive >  return a negative number")
+    void multiplyWhenOneNumberIsNegativeAndTheAnotherIsPositiveReturnZero(){
+        int result = calculator.multiply(-1,3);
+        int secondResult = calculator.multiply(1,-3);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(-3,result),
+                ()-> Assertions.assertEquals(-3,secondResult)
+        );
+    }
+
+    @Test
+    @DisplayName("#Multiply > when both number are Positive >  return a negative number")
+    void multiplyWhenBothNumberArePositiveReturnANegativeNumber(){
+        int result = calculator.multiply(-1,3);
+        int secondResult = calculator.multiply(1,-3);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(-3,result),
+                ()-> Assertions.assertEquals(-3,secondResult)
+        );
+    }
+
+    @Test
+    @DisplayName("#Multiply > when both number are Negative >  return a positive number")
+    void multiplyWhenBothNumberAreNegativeReturnAPositiveNumber(){
+        int result = calculator.multiply(-1,-3);
+        Assertions.assertEquals(-3,result);
+
+    }
 
 }

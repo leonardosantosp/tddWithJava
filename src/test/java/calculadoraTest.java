@@ -10,6 +10,7 @@ public class calculadoraTest {
         calculator = new calculadora();
     }
 
+    /*ADD*/
     @Test
     @DisplayName("Add > when both number are positive > return a positive number")
     void addWhenBothNumbersArePositiveReturnAPositiveNumber(){
@@ -67,6 +68,7 @@ public class calculadoraTest {
         int result = calculator.add(0,0);
         Assertions.assertEquals(0,result);
     }
+    /*DIVISION*/
     @Test
     @DisplayName("#Divide > When the divider is zero > Throw an exception")
     void divideWhenTheDividerIzZeroThrowAnException(){
@@ -78,9 +80,55 @@ public class calculadoraTest {
     @Test
     @DisplayName("#Divide > When both numbers are positive >  return a int number")
     void divideWhenBothNumbersArePositiveReturnAIntNumber(){
-        Assertions.assertThrows(ArithmeticException.class, ()-> {
-            calculator.divide(5,0);
-        });
+             int result = calculator.divide(6,3);
+            Assertions.assertEquals(2,result);
+
     }
+
+    @Test
+    @DisplayName("#Divide > When both numbers are negative >  return a int number")
+    void divideWhenBothNumbersAreNegativeReturnAIntNumber(){
+        int result = calculator.divide(-6,-3);
+        Assertions.assertEquals(2,result);
+
+    }
+
+    @Test
+    @DisplayName("#Divide >  when one number is positive and the another is negative >  return a  negative int number")
+    void divideWhenOneNumberIsPositiveAndTheAnotherIsNegativeReturnANegativeIntNumber(){
+        int result = calculator.divide(6,-3);
+        Assertions.assertEquals(-2,result);
+    }
+
+    @Test
+    @DisplayName("#Divide >  when one number is Negative and the another is Positive >  return a  negative int number")
+    void divideWhenOneNumberIsnegativeAndTheAnotherIsNegativeReturnANegativeIntNumber(){
+        int result = calculator.divide(-6,3);
+        Assertions.assertEquals(-2,result);
+    }
+
+    @Test
+    @DisplayName("#Divide > divide when division result is float >  return a  int number")
+    void divideWhenDivisionResultIsFloatReturnAIntNumber(){
+        int result = calculator.divide(5,2);
+        int secondResult = calculator.divide(2,5);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(2,result),
+                ()-> Assertions.assertEquals(0,secondResult)
+        );
+    }
+
+    @Test
+    @DisplayName("#Divide > divide when division result is float >  return a  negative int number")
+    void divideWhenDivisionResultIsFloatReturnANegativeIntNumber(){
+        int result = calculator.divide(-5,2);
+        int secondResult = calculator.divide(-2,5);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(-2,result),
+                ()-> Assertions.assertEquals(0,secondResult)
+        );
+    }
+
+    /*MULTIPLICATION*/
 
 }
